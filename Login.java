@@ -1,48 +1,42 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class Login {
     public static void main(String[] args) {
-        // Create the frame
-        JFrame frame = new JFrame("JAVASTOCK");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400, 300);
-        frame.setLocationRelativeTo(null); // Center the frame on the screen
-        frame.setResizable(false); // Prevent resizing
+        JFrame loginframe = new JFrame("JAVASTOCK");
+        loginframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        loginframe.setSize(450, 600);
+        loginframe.setLocationRelativeTo(null);
+        loginframe.setResizable(false);
 
-        // Main panel
         JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout(20, 20)); // Add spacing
-        mainPanel.setBackground(new Color(245, 245, 245)); // Light gray background
+        mainPanel.setLayout(new BorderLayout(20, 20));
+        mainPanel.setBackground(Color.LIGHT_GRAY);
 
-        // Title Panel
         JPanel titlePanel = new JPanel();
         titlePanel.setBackground(mainPanel.getBackground());
+        titlePanel.add(Box.createVerticalStrut(50));
         titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
 
-        // Title Label
         JLabel titleLabel = new JLabel("JAVASTOCK");
-        titleLabel.setFont(new Font("Arial", Font.BOLD, 28));
-        titleLabel.setForeground(new Color(33, 150, 243)); // Blue color
+        titleLabel.setFont(new Font("Arial", Font.PLAIN, 40));
         titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titlePanel.add(titleLabel);
 
-        // Subtitle Label
         JLabel subtitleLabel = new JLabel("Inventory Management System");
-        subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 16));
-        subtitleLabel.setForeground(Color.DARK_GRAY);
+        subtitleLabel.setFont(new Font("Arial", Font.PLAIN, 20));
         subtitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titlePanel.add(subtitleLabel);
 
-        // Add the title panel to the main panel
-        mainPanel.add(titlePanel, BorderLayout.NORTH);
 
-        // Input Panel
+
         JPanel inputPanel = new JPanel();
         inputPanel.setBackground(mainPanel.getBackground());
-        inputPanel.setLayout(new GridLayout(5, 12, 0, 0)); // 4 rows, 1 column with spacing
+        inputPanel.setLayout(new GridLayout(7, 1, 0, 0));
 
-        // Username Label and Field
+
         JLabel usernameLabel = new JLabel("Username:");
         usernameLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         usernameLabel.setForeground(Color.BLACK);
@@ -51,7 +45,6 @@ public class Login {
         usernameField.setFont(new Font("Arial", Font.PLAIN, 14));
         usernameField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 
-        // Password Label and Field
         JLabel passwordLabel = new JLabel("Password:");
         passwordLabel.setFont(new Font("Arial", Font.PLAIN, 14));
         passwordLabel.setForeground(Color.BLACK);
@@ -60,19 +53,38 @@ public class Login {
         passwordField.setFont(new Font("Arial", Font.PLAIN, 14));
         passwordField.setBorder(BorderFactory.createLineBorder(Color.GRAY, 1));
 
-        // Add components to the input panel
+        JButton loginButton = new JButton("Login");
+        loginButton.setFont(new Font("Arial", Font.PLAIN, 14));
+        loginButton.setBackground(new Color(173,216,230));
+        loginButton.setForeground(Color.BLACK);
+        JButton exitButton = new JButton("Exit");
+        exitButton.setFont(new Font("Arial", Font.PLAIN, 14));
+        exitButton.setBackground(new Color(255,105,97));
+        exitButton.setForeground(Color.BLACK);
+
+
         inputPanel.add(usernameLabel);
         inputPanel.add(usernameField);
         inputPanel.add(passwordLabel);
         inputPanel.add(passwordField);
+        inputPanel.add(new JLabel(""));
+        inputPanel.add(loginButton);
+        inputPanel.add(exitButton);
 
-        // Add the input panel to the center of the main panel
+        JPanel bottomPanel = new JPanel();
+        bottomPanel.setBackground(Color.LIGHT_GRAY);
+        JLabel bottomLabel = new JLabel("Powered by EKRR Software Solutions");
+        bottomLabel.setFont(new Font("Arial", Font.PLAIN, 12));
+        bottomLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
+        bottomPanel.add(Box.createVerticalStrut(50));
+        bottomPanel.add(bottomLabel);
+
+        mainPanel.add(titlePanel, BorderLayout.NORTH);
         mainPanel.add(inputPanel, BorderLayout.CENTER);
+        mainPanel.add(bottomPanel,BorderLayout.SOUTH);
 
-        // Add the main panel to the frame
-        frame.add(mainPanel);
 
-        // Display the frame
-        frame.setVisible(true);
+        loginframe.add(mainPanel);
+        loginframe.setVisible(true);
     }
 }
