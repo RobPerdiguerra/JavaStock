@@ -1,9 +1,9 @@
+package Login;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-public class Login {
+public class LoginUI {
     public static void main(String[] args) {
         JFrame loginframe = new JFrame("JAVASTOCK");
         loginframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -11,12 +11,12 @@ public class Login {
         loginframe.setLocationRelativeTo(null);
         loginframe.setResizable(false);
 
-        JPanel mainPanel = new JPanel();
-        mainPanel.setLayout(new BorderLayout(20, 20));
-        mainPanel.setBackground(Color.LIGHT_GRAY);
+        JPanel loginPanel = new JPanel();
+        loginPanel.setLayout(new BorderLayout(20, 20));
+        loginPanel.setBackground(Color.LIGHT_GRAY);
 
         JPanel titlePanel = new JPanel();
-        titlePanel.setBackground(mainPanel.getBackground());
+        titlePanel.setBackground(loginPanel.getBackground());
         titlePanel.add(Box.createVerticalStrut(50));
         titlePanel.setLayout(new BoxLayout(titlePanel, BoxLayout.Y_AXIS));
 
@@ -30,10 +30,13 @@ public class Login {
         subtitleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
         titlePanel.add(subtitleLabel);
 
-
+        JPanel leftPanel = new JPanel();
+        leftPanel.setBackground(loginPanel.getBackground());
+        JPanel rightPanel = new JPanel();
+        rightPanel.setBackground(loginPanel.getBackground());
 
         JPanel inputPanel = new JPanel();
-        inputPanel.setBackground(mainPanel.getBackground());
+        inputPanel.setBackground(loginPanel.getBackground());
         inputPanel.setLayout(new GridLayout(7, 1, 0, 0));
 
 
@@ -55,7 +58,7 @@ public class Login {
 
         JButton loginButton = new JButton("Login");
         loginButton.setFont(new Font("Arial", Font.PLAIN, 14));
-        loginButton.setBackground(new Color(173,216,230));
+        loginButton.setBackground(new Color(150,200,230));
         loginButton.setForeground(Color.BLACK);
         JButton exitButton = new JButton("Exit");
         exitButton.setFont(new Font("Arial", Font.PLAIN, 14));
@@ -79,12 +82,14 @@ public class Login {
         bottomPanel.add(Box.createVerticalStrut(50));
         bottomPanel.add(bottomLabel);
 
-        mainPanel.add(titlePanel, BorderLayout.NORTH);
-        mainPanel.add(inputPanel, BorderLayout.CENTER);
-        mainPanel.add(bottomPanel,BorderLayout.SOUTH);
+        loginPanel.add(leftPanel, BorderLayout.WEST);
+        loginPanel.add(rightPanel, BorderLayout.EAST);
+        loginPanel.add(titlePanel, BorderLayout.NORTH);
+        loginPanel.add(inputPanel, BorderLayout.CENTER);
+        loginPanel.add(bottomPanel,BorderLayout.SOUTH);
 
 
-        loginframe.add(mainPanel);
+        loginframe.add(loginPanel);
         loginframe.setVisible(true);
     }
 }
